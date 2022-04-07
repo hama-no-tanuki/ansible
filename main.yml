@@ -1,0 +1,14 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+  tasks:
+  - name: get log
+    ios_command:
+      commands: "{{ command_list }}"
+    register: result
+
+  - name: debug
+    debug:
+      var: result.stdout_lines
